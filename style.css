@@ -228,7 +228,7 @@ body {
 /* MOBILE FIX: When screen is smaller than 768px */
 @media (max-width: 768px) {
     .card-overlay h3 {
-        font-size: 1.2rem; /* Shrinks the text so it stays inside the white box */
+        font-size: 1rem; /* Shrinks the text so it stays inside the white box */
         margin-bottom: 0.5rem;
     }
 }
