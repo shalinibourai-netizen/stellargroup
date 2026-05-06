@@ -223,7 +223,6 @@ body {
     
     /* ADD THIS: Prevents long words from breaking the box */
     max-width: 100%;
-    word-wrap: break-word;
 }
 
 /* MOBILE FIX: When screen is smaller than 768px */
