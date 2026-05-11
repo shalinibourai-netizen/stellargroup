@@ -880,69 +880,50 @@ sup {
     }
 }
 
-/* Mobile Map Interaction Hint */
+/* Mobile Map Zoom Button */
 @media (max-width: 768px) {
-    .map-container {
+    .map-wrapper {
         position: relative;
-        display: inline-block;
-        width: 100%;
-        cursor: zoom-in;
+        display: block;
+        cursor: pointer;
     }
 
-    /* Adds a "Zoom" icon overlay in the corner of the map */
-    .map-container::after {
-        content: '🔍 Tap to Zoom';
+    /* This creates the visible button people will see */
+    .map-wrapper::after {
+        content: '🔍 Tap to Zoom Map';
         position: absolute;
-        bottom: 15px;
-        right: 15px;
-        background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0066b2; /* Stellar Brand Blue */
         color: white;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-family: sans-serif;
-        pointer-events: none; /* Let clicks pass through to the image */
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-
-    /* The zoom effect when they hold their finger down */
-    .map-container img:active {
-        transform: scale(1.8); /* Stronger zoom so they can read the text */
-        transition: transform 0.3s ease;
-        z-index: 999;
-        position: relative;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        z-index: 5;
+        white-space: nowrap;
     }
 }
 
-/* Styling card labels (Residential, Commercial, etc.) for Mobile */
 @media (max-width: 768px) {
-    /* Target the label container (usually a div or span inside the card) */
-    .portfolio-card .label, 
-    .portfolio-card h3 { 
+    .portfolio-card .label { 
         background: #ffffff !important;
-        color: #0066b2 !important; /* Use your brand blue */
-        padding: 10px 20px !important;
-        border-radius: 4px !important;
-        display: inline-block !important;
+        color: #0066b2 !important;
+        padding: 12px 25px !important;
+        border-radius: 50px !important; /* Rounded pill shape looks more like a button */
         font-weight: 700 !important;
         text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; /* Makes it "pop" off the card */
-        border: 1px solid rgba(0, 102, 178, 0.2) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important; /* Makes it "float" */
+        border: 2px solid #0066b2 !important; /* A solid border says "I am interactive" */
+        letter-spacing: 1px;
     }
 
-    /* Add an arrow icon to suggest a link exists */
-    .portfolio-card .label::after,
-    .portfolio-card h3::after {
-        content: ' →';
-        font-size: 1.1rem;
-        vertical-align: middle;
-    }
-
-    /* Give a "pressed" effect when the user taps the card */
-    .portfolio-card:active {
-        transform: scale(0.98); /* Slight shrink to show it was clicked */
-        transition: transform 0.1s ease;
+    /* Provide a "Pulse" effect when tapped */
+    .portfolio-card:active .label {
+        background-color: #0066b2 !important;
+        color: #ffffff !important;
+        transform: translateY(2px); /* Button actually "depresses" when touched */
     }
 }
