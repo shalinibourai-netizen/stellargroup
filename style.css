@@ -16,7 +16,7 @@ section {
 }
 
 body {
-    background-color: #ffffff;
+    background-color: rgb(30 35 48);
     overflow-x: hidden;
 }
 .logo {
@@ -37,7 +37,7 @@ body {
 
 /* Navbar Fix */
 .navbar {
-    background-color: rgb(30 35 48);
+    background-color: #f0f0f0;
     padding: 0 4%; /* Use 4% for a "neat" edge look like your first screenshot */
     display: flex;
     justify-content: space-between; /* This forces Logo left and Group right */
@@ -68,7 +68,7 @@ body {
 }
 
 .nav-links a {
-    color: #cbd5e0;
+    color: #000;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.7rem;
@@ -101,6 +101,22 @@ body {
     margin: 5rem auto;
     margin-top: 20px;
 }
+/* Container to hold text and icon side-by-side */
+.heading-container {
+    display: flex;
+    align-items: center; /* Vertical alignment */
+    gap: 10px;           /* Space between text and icon */
+}
+
+/* Remove the old circle styles and style the icon specifically for this spot */
+.business-icon-small {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    /* If you want the icon to be black/dark like the text: */
+    filter: brightness(0); 
+    opacity: 0.7;
+}
 
 /* --- Section Title Adjustment --- */
 .section-title {
@@ -112,7 +128,7 @@ body {
     font-style: italic;
     font-weight: 850; /* Professional Semi-bold */
     font-size: 3.2rem;
-    color: #0a1128;
+    color: #f0f0f0;
     margin-top: 0; 
     padding-top: 20px; /* Adjust this number to bring it higher */
     margin-bottom: 3rem;
@@ -122,9 +138,25 @@ body {
 /* 1. Ensure the Grid stays intact */
 .business-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+   /* Forces 4 columns on large screens */
+    grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     padding: 20px;
+}
+
+/* 2. Responsive adjustment for Tablets & Mobile */
+@media (max-width: 1100px) {
+    .business-grid {
+        /* Drops to 2 columns on tablets */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .business-grid {
+        /* Drops to 1 column on mobile */
+        grid-template-columns: 1fr;
+    }
 }
 
 /* 2. The Card must have a height for absolute images to show */
@@ -134,82 +166,43 @@ body {
     border-radius: 15px;
     overflow: hidden;
     background: #f0f0f0; /* Placeholder color while images load */
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 .card-overlay {
     position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
+    bottom: 20px;
+    left: 20px;
+   
+    width: fit-content;        /* This makes the box only as wide as the text */
+    max-width: calc(100% - 40px); /* Prevents it from going off-edge on small cards */
     
     /* THE STRIP LOOK */
     background: rgba(255, 255, 255, 0.85) !important; /* White transparent */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
+    backdrop-filter: trasparent rgba(..., 0.9);
     -webkit-backdrop-filter: blur(10px);
     
-    padding: 15px 20px;
+    padding: 10px 20px;
     border-radius: 12px;
     z-index: 10; /* Ensures it sits ABOVE the shuffling images */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
-/* --- Add this at the bottom of your CSS --- */
-
-.icon-circle {
-    width: 45px;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.25); /* Slightly brighter for better visibility */
-    backdrop-filter: blur(5px);            /* Makes the icon pop against moving backgrounds */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.business-icon {
-    width: 26px;
-    height: 26px;
-    object-fit: contain;
-    /* REMOVE OR COMMENT OUT THE INVERT */
-    filter: brightness(0); 
-    opacity: 0.8; /* Makes it look professional */
-}
-
-.card-overlay h3 {
+/* This targets the link inside your heading */
+.card-overlay h3 a {
+    text-decoration: none !important; /* Removes the underline */
+    color: #1a1a1a;                  /* Set your preferred text color (e.g., Dark Grey) */
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #0a1128;
-    display: inline-block;
-    padding: 2px 5px;
-    border-radius: 4px;
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.5px;
-    max-width: 100%;
-}
-.visit-link {
-    text-decoration: none;
-    color: #666;
-    font-weight: 700;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-/* This targets the link specifically when the user's mouse is over the card */
-.card:hover .visit-link {
-    color: #c5a059 !important; /* A premium gold color - change as needed */
-    transition: color 0.3s ease; /* Makes the color change smooth, not instant */
+    font-weight: 850;
+    font-size: 2rem;
+    display: block;         
 }
 
-/* This makes the arrow move slightly to the right on hover, adding a "pro" feel */
-.card:hover .visit-link i {
-    transform: translateX(5px);
-    transition: transform 0.3s ease;
+/* Optional: Change color slightly when hovering over the text */
+.card-overlay h3 a:hover {
+    color: #d4af37; /* Example: changes to blue only when you touch it */
 }
-
 /* 3. Slideshow Container */
 .slideshow {
     width: 100%;
@@ -220,8 +213,8 @@ body {
 .slideshow img {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    margin-left: -0.5%; /* Re-centers the slightly larger image */
+    width: 101%;
     height: 100%;
     object-fit: cover !important;
     opacity: 0; 
@@ -290,7 +283,7 @@ body {
 
 /* --- About Section Layout --- */
 .about-section {
-    background-color: rgb(30 35 48);
+    background-color: rgb(240, 240, 240);
     padding: 80px 0 0 0;
     margin-top: 50px;
 }
@@ -307,11 +300,11 @@ body {
     /* If it looks too far left, add a small left padding to compensate for visual weight */
     padding-left: 20px; 
     
-    font-family: 'Cormorant Garamond', serif;
+font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 850; /* Professional Semi-bold */
     font-size: 3.2rem;
-    color: #ffffff;
+    color: rgb(10, 17, 40);
     margin-top: 10px;
     margin-bottom: 3rem;
     text-transform: capitalize;
@@ -328,14 +321,14 @@ body {
     font-style: italic;
     font-weight: 700; /* Little bold as requested */
     font-size: 1.8rem;
-    color: #ffffff;
+    color: rgb(10, 17, 40);
     margin-bottom: 15px;
 }
 
 .about-block p {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.8; /* Increased line height for professional readability */
-    color: #ffffff;
+    color: rgb(10, 17, 40);
     font-size: 1.1rem;
     
     /* CRITICAL FIX: Set this to 100% to stop early wrapping */
@@ -533,10 +526,16 @@ sup {
 }
 
 .join-link {
-    text-decoration: underline;
-    font-weight: 700;
-    color: #0a1128;
-    font-size: 0.9rem;
+    color: #001529;           /* Match your dark blue theme */
+    text-decoration: underline; /* Keep the underline so users know it's clickable */
+    font-size: 0.95rem;
+    font-weight: 650;
+    transition: color 0.3s ease;
+}
+
+.join-link:hover {
+    color: #d4af37;           /* Changes color slightly when hovered */
+    text-decoration: none;    /* Optional: removes underline on hover */
 }
 
 /* Responsiveness */
@@ -552,7 +551,7 @@ sup {
 
 /* --- Footprint Section Layout --- */
 .footprint-section {
-    background-color: #fcfcfc;
+    background-color: rgb(30 35 48);
     padding: 80px 0;
     text-align: center;
 }
@@ -568,7 +567,7 @@ sup {
     font-style: italic;
     font-weight: 850; /* Professional Semi-bold */
     font-size: 3.2rem;
-    color: #0a1128;
+    color: #fff;
     margin-top: 10px;
     margin-bottom: 3rem;
     text-transform: capitalize;
@@ -641,7 +640,7 @@ sup {
 
 /* --- Footer Main Styling --- */
 .site-footer {
-    background-color: rgb(30 35 48);
+    background-color: rgb(240, 240, 240);
     color: #ffffff;
     padding: 30px 0;
     font-family: 'Montserrat', sans-serif;
@@ -649,16 +648,34 @@ sup {
 
 /* 2. The Inner Container */
 .footer-container {
-    /* Use a large percentage width to give it room to move left */
-    width: 95%; 
-    max-width: 1400px;
-    /* Remove 'margin: 0 auto' and set to 0 to hug the left side */
-    margin-left: 5% !important; 
-    margin-right: auto;
+    position: relative; /* This is the anchor for the icons */
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 40px 40px; /* Keep your existing padding */
+    padding-bottom: 10px;   /* REDUCE THIS from 40px to 10px */
+    box-sizing: border-box;
     
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Aligns items to the left */
+    align-items: flex-start; 
+}
+
+.footer-social-aside {
+    position: absolute;  /* This takes them out of the normal flow */
+    right: 40px;         /* Distance from the right edge */
+    bottom: 40px;        /* Distance from the bottom edge */
+    display: flex;
+    gap: 15px;
+}
+/* 3. Style the icons */
+.footer-social-aside i {
+    font-size: 28px;
+    color: #001529;      /* Matches your Corporate Office color */
+    transition: 0.3s ease;
+}
+
+.footer-social-aside i:hover {
+    color: #0077b5;      /* LinkedIn blue on hover */
 }
 
 .contact-info-wrapper {
@@ -697,7 +714,7 @@ sup {
 
 /* Main Heading: "Corporate Office" */
 .contact-heading {
-    color: #ffffff;
+    color: rgb(10, 17, 40);
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 15px;
@@ -713,7 +730,7 @@ sup {
 
 /* Icon Styling */
 .contact-row i {
-    color: #d4af37; 
+    color: rgb(10, 17, 40); 
     font-size: 0.9rem;
     width: 25px;    /* Fixed width so all text starts at the same line */
     margin-top: 5px;
@@ -722,7 +739,7 @@ sup {
 
 /* Text Styling */
 .contact-row p {
-    color: #d1d1d1; /* Slightly off-white for better readability */
+    color: rgb(10, 17, 40);
     font-size: 0.9rem;
     line-height: 1.6;
     margin: 0;
@@ -731,7 +748,7 @@ sup {
 
 /* Link Styling */
 .contact-row a {
-    color: #ffffff;
+    color: rgb(10, 17, 40);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: 0.3s;
