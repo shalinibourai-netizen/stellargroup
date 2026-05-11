@@ -833,3 +833,34 @@ sup {
         filter: brightness(0.9);
     }
 }
+
+/* Mobile Header Adjustment - Only activates on small screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;    /* Stacks logo and nav-group vertically */
+        height: auto;              /* Allows the height to grow for stacked content */
+        padding: 15px 0;           /* Adds breathing room top and bottom */
+    }
+
+    .nav-right-group {
+        flex-direction: column;    /* Stacks links above the button */
+        gap: 1.5rem;               /* Reduces the gap for smaller screens */
+        margin-top: 15px;          /* Separates the menu from the logo */
+        width: 100%;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;           /* Allows links to wrap to a second line if needed */
+        justify-content: center;   /* Centers the links */
+        gap: 1rem;                 /* Reduces space between links */
+        padding: 0;
+    }
+
+    .nav-links a {
+        font-size: 0.65rem;        /* Slightly smaller font to fit width */
+    }
+
+    .contact-btn {
+        padding: 0.5rem 1.2rem;    /* Makes button slightly smaller for mobile */
+    }
+}
