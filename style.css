@@ -869,14 +869,22 @@ sup {
         justify-content: center !important;
         margin: 0 !important;
     }
-
+@media (max-width: 768px) {
     .nav-links {
-        justify-content: center !important;
-        gap: 15px !important; /* More space between links for easier tapping */
+        display: flex !important;
+        flex-direction: column !important; /* Forces vertical stacking */
+        align-items: center !important;
+        gap: 10px !important; /* Adds clean space between lines */
+        width: 100% !important;
     }
 
     .nav-links a {
-        font-size: 0.65rem !important; /* Slightly larger than before for readability */
+        font-size: 0.75rem !important; /* Keeps it professional and readable */
+        white-space: nowrap !important; /* Prevents words from splitting onto two lines */
+        text-transform: uppercase;
+        font-weight: 700;
+        display: block !important;
+        text-align: center;
     }
 }
 
@@ -889,21 +897,25 @@ sup {
     }
 
     /* This creates the visible button people will see */
+  /* Refined Mobile Map Zoom Button */
+@media (max-width: 768px) {
     .map-wrapper::after {
-        content: '🔍 Tap to Zoom Map';
+        content: '🔍 Tap to Zoom'; /* Shortened text to save space */
         position: absolute;
-        bottom: 20px;
+        bottom: 12px; /* Moved closer to the bottom edge */
         left: 50%;
         transform: translateX(-50%);
-        background: #0066b2; /* Stellar Brand Blue */
+        background: rgba(0, 102, 178, 0.9); /* Slight transparency for a sleeker look */
         color: white;
-        padding: 10px 20px;
-        border-radius: 30px;
-        font-size: 14px;
-        font-weight: bold;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        padding: 6px 16px; /* Reduced padding to make it thinner */
+        border-radius: 20px; /* More elegant rounded corners */
+        font-size: 11px; /* Smaller font for a professional feel */
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         z-index: 5;
         white-space: nowrap;
+        border: 1px solid rgba(255,255,255,0.2); /* Subtle border for definition */
     }
 }
 
