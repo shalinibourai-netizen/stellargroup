@@ -833,51 +833,116 @@ sup {
         filter: brightness(0.9);
     }
 }
-/* Final Sleek Mobile Header Adjustment */
+
+/* --- Final Mobile Header Polish --- */
 @media (max-width: 768px) {
+    /* 1. Hide the Contact Button only on mobile */
+    .contact-btn {
+        display: none !important;
+    }
+
+    /* 2. Make the Navbar taller so the brand feels prominent */
     .navbar {
-        flex-direction: column !important;
         height: auto !important;
-        padding: 8px 4% !important; /* Very minimal padding */
+        padding: 20px 4% !important; /* Increased padding for more white space */
+        flex-direction: column !important;
+        gap: 15px !important;
     }
 
+    /* 3. Make the Logo larger so it doesn't get lost */
+    .logo {
+        font-size: 2rem !important; /* Increase font size if it's text-based */
+        letter-spacing: 5px !important;
+        display: block !important;
+        text-align: center !important;
+    }
+    
+    /* If your logo is an image, use this instead: */
+    .logo img {
+        height: 50px !important; 
+        width: auto !important;
+    }
+
+    /* 4. Center the links neatly under the larger logo */
     .nav-right-group {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
         width: 100% !important;
-        align-items: center !important;
-        gap: 0 !important;
-        margin-top: 0 !important;
+        justify-content: center !important;
+        margin: 0 !important;
     }
 
-    /* This forces the links to be small enough to stay on one line */
     .nav-links {
-        width: 100% !important;
-        justify-content: space-between !important; /* Spreads them out evenly */
-        gap: 5px !important; /* Minimal gap */
-        margin-top: 8px !important;
-        padding: 0 !important;
-        list-style: none;
+        justify-content: center !important;
+        gap: 15px !important; /* More space between links for easier tapping */
     }
 
     .nav-links a {
-        font-size: 0.55rem !important; /* Very small but readable */
-        letter-spacing: 0px !important;
-        white-space: nowrap !important; /* Prevents text like 'Our Businesses' from breaking */
+        font-size: 0.65rem !important; /* Slightly larger than before for readability */
+    }
+}
+
+/* Mobile Map Interaction Hint */
+@media (max-width: 768px) {
+    .map-container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        cursor: zoom-in;
+    }
+
+    /* Adds a "Zoom" icon overlay in the corner of the map */
+    .map-container::after {
+        content: '🔍 Tap to Zoom';
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-family: sans-serif;
+        pointer-events: none; /* Let clicks pass through to the image */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    /* The zoom effect when they hold their finger down */
+    .map-container img:active {
+        transform: scale(1.8); /* Stronger zoom so they can read the text */
+        transition: transform 0.3s ease;
+        z-index: 999;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+}
+
+/* Styling card labels (Residential, Commercial, etc.) for Mobile */
+@media (max-width: 768px) {
+    /* Target the label container (usually a div or span inside the card) */
+    .portfolio-card .label, 
+    .portfolio-card h3 { 
+        background: #ffffff !important;
+        color: #0066b2 !important; /* Use your brand blue */
+        padding: 10px 20px !important;
+        border-radius: 4px !important;
+        display: inline-block !important;
         font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; /* Makes it "pop" off the card */
+        border: 1px solid rgba(0, 102, 178, 0.2) !important;
     }
 
-    /* Smallest button possible to keep the strip thin */
-    .contact-btn {
-        padding: 4px 10px !important;
-        font-size: 0.6rem !important;
-        border-radius: 4px !important; /* Slightly squarer looks cleaner at small sizes */
+    /* Add an arrow icon to suggest a link exists */
+    .portfolio-card .label::after,
+    .portfolio-card h3::after {
+        content: ' →';
+        font-size: 1.1rem;
+        vertical-align: middle;
     }
 
-    /* Shrink the logo slightly for mobile to save space */
-    .logo img {
-        height: 25px !important;
-        width: auto !important;
+    /* Give a "pressed" effect when the user taps the card */
+    .portfolio-card:active {
+        transform: scale(0.98); /* Slight shrink to show it was clicked */
+        transition: transform 0.1s ease;
     }
 }
