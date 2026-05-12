@@ -870,31 +870,41 @@ sup {
         margin: 0 !important;
     }
 
-    @media (max-width: 768px) {
-    /* Container for the 5 headings */
+/* ONLY affects screens smaller than 768px (Mobile) */
+@media (max-width: 768px) {
+    
+    /* 1. Center the Navigation Stack */
     .nav-links {
         display: flex !important;
-        flex-direction: column !important; /* Vertical stack */
-        align-items: center !important;    /* Horizontal center */
-        justify-content: center !important;
+        flex-direction: column !important; /* Stack vertically */
+        align-items: center !important;    /* Center horizontally */
         width: 100% !important;
-        gap: 12px !important;              /* Uniform spacing between all links */
-        padding: 10px 0 !important;
-        margin: 0 !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        list-style: none !important;
+        gap: 15px !important;              /* Uniform spacing */
     }
 
-    /* All links (including Contact Us) are now identical */
-    .nav-links a {
-        font-size: 0.8rem !important;      /* Consistent size for all */
-        font-weight: 700 !important;       /* Bold/Premium look */
-        text-transform: uppercase !important;
-        text-align: center !important;
+    .nav-links li {
         width: 100% !important;
-        color: #000 !important;
-        white-space: nowrap !important;    /* Prevents any breaking */
-        letter-spacing: 1px;
+        text-align: center !important;
     }
-}
+
+    .nav-links a {
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        color: #000 !important;
+        display: inline-block !important;
+    }
+
+    /* Make the Contact Button look like a normal link on mobile */
+    .contact-btn {
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
 
 /* Mobile Map Zoom Button */
 @media (max-width: 768px) {
@@ -927,41 +937,36 @@ sup {
     }
 }       
 
-@media (max-width: 768px) {
-    /* 1. Reset the overlay to remove the blur and big box */
+/* 2. Portfolio Labels: Light Grey, Small, No Caps */
     .card-overlay {
         background: none !important;
-        backdrop-filter: none !important;
+        backdrop-filter: none !important; /* Removes blur */
         display: flex !important;
         align-items: flex-end !important;
-        justify-content: flex-end !important; /* Moves button to the bottom right */
-        padding: 15px !important;
+        justify-content: center !important;
+        padding-bottom: 15px !important; /* Slightly tighter spacing */
     }
 
-    /* 2. Create the small, solid brand button */
     .card-overlay h3, 
     .card-overlay .label { 
-        background: #0066b2 !important; /* Your brand blue */
-        color: #ffffff !important;      /* White text */
+        background: rgba(240, 240, 240, 0.9) !important; /* Light grey */
+        color: #000000 !important;      /* Black text for contrast */
+        padding: 6px 14px !important;   /* Compact sizing */
+        font-size: 0.8rem !important;   /* Smaller font */
+        border-radius: 6px !important;
+        border: none !important;        /* No outline */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
         
-        /* Smaller, compact sizing */
-        padding: 8px 16px !important;
-        font-size: 0.75rem !important;
-        border-radius: 50px !important; /* Rounded pill shape */
-        
-        /* Remove the outline/border you didn't like */
-        border: none !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
-        
-        text-transform: uppercase !important;
-        font-weight: 600 !important;
-        letter-spacing: 0.5px !important;
+        /* Text styling */
+        text-transform: none !important; /* Removes All Caps */
+        font-weight: 500 !important;     /* Medium weight for readability */
         margin: 0 !important;
+        display: inline-block !important;
     }
 
-    /* 3. Tap effect so it feels interactive */
+    /* Add a small hover/active effect for feedback */
     .portfolio-card:active .card-overlay h3 {
-        background-color: #004d85 !important; /* Darkens slightly on touch */
-        transform: scale(0.95);
+        background: rgba(220, 220, 220, 1) !important;
+        transform: scale(0.98);
     }
 }
