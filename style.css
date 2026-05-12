@@ -869,27 +869,30 @@ sup {
         justify-content: center !important;
         margin: 0 !important;
     }
-@media (max-width: 768px) {
+
+    @media (max-width: 768px) {
+    /* Container for the 5 headings */
     .nav-links {
         display: flex !important;
-        flex-direction: column !important; 
+        flex-direction: column !important; /* Vertical stack */
+        align-items: center !important;    /* Horizontal center */
         justify-content: center !important;
-        align-items: center !important;
-        gap: 10px !important; /* Adds clean space between lines */
         width: 100% !important;
-        padding-left: 0 !important; /* Removes any default left padding */
-        margin: 0 auto !important; /* Centers the whole block */
+        gap: 12px !important;              /* Uniform spacing between all links */
+        padding: 10px 0 !important;
+        margin: 0 !important;
     }
 
+    /* All links (including Contact Us) are now identical */
     .nav-links a {
+        font-size: 0.8rem !important;      /* Consistent size for all */
+        font-weight: 700 !important;       /* Bold/Premium look */
+        text-transform: uppercase !important;
+        text-align: center !important;
         width: 100% !important;
-        text-align: center;
-        font-size: 0.75rem !important; /* Keeps it professional and readable */
-        white-space: nowrap !important; /* Prevents words from splitting onto two lines */
-        text-transform: uppercase;
-        font-weight: 700;
-        display: block !important;
-        
+        color: #000 !important;
+        white-space: nowrap !important;    /* Prevents any breaking */
+        letter-spacing: 1px;
     }
 }
 
@@ -925,35 +928,40 @@ sup {
 }       
 
 @media (max-width: 768px) {
-    /* 1. Center the overlay content and give it some padding */
+    /* 1. Reset the overlay to remove the blur and big box */
     .card-overlay {
+        background: none !important;
+        backdrop-filter: none !important;
         display: flex !important;
-        align-items: flex-end !important; /* Positions buttons at the bottom of the card */
-        justify-content: center !important;
-        padding-bottom: 20px !important;
-        background: rgba(0, 0, 0, 0.2) !important; /* Subtle dark tint to help button stand out */
+        align-items: flex-end !important;
+        justify-content: flex-end !important; /* Moves button to the bottom right */
+        padding: 15px !important;
     }
 
-    /* 2. Style the text/headings inside the overlay to look like a Button */
+    /* 2. Create the small, solid brand button */
     .card-overlay h3, 
     .card-overlay .label { 
-        background: #ffffff !important;
-        color: #0066b2 !important; /* Stellar Brand Blue */
-        padding: 10px 20px !important;
-        border-radius: 4px !important;
-        border: 2px solid #0066b2 !important;
-        font-weight: 800 !important;
+        background: #0066b2 !important; /* Your brand blue */
+        color: #ffffff !important;      /* White text */
+        
+        /* Smaller, compact sizing */
+        padding: 8px 16px !important;
+        font-size: 0.75rem !important;
+        border-radius: 50px !important; /* Rounded pill shape */
+        
+        /* Remove the outline/border you didn't like */
+        border: none !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+        
         text-transform: uppercase !important;
-        font-size: 0.8rem !important;
-        letter-spacing: 1px !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
-        display: inline-block !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        margin: 0 !important;
     }
 
-    /* 3. Give feedback when the user taps the card */
+    /* 3. Tap effect so it feels interactive */
     .portfolio-card:active .card-overlay h3 {
-        background-color: #0066b2 !important;
-        color: #ffffff !important;
-        transform: scale(0.95) !important;
+        background-color: #004d85 !important; /* Darkens slightly on touch */
+        transform: scale(0.95);
     }
 }
