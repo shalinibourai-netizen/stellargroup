@@ -872,19 +872,24 @@ sup {
 @media (max-width: 768px) {
     .nav-links {
         display: flex !important;
-        flex-direction: column !important; /* Forces vertical stacking */
+        flex-direction: column !important; 
+        justify-content: center !important;
         align-items: center !important;
         gap: 10px !important; /* Adds clean space between lines */
         width: 100% !important;
+        padding-left: 0 !important; /* Removes any default left padding */
+        margin: 0 auto !important; /* Centers the whole block */
     }
 
     .nav-links a {
+        width: 100% !important;
+        text-align: center;
         font-size: 0.75rem !important; /* Keeps it professional and readable */
         white-space: nowrap !important; /* Prevents words from splitting onto two lines */
         text-transform: uppercase;
         font-weight: 700;
         display: block !important;
-        text-align: center;
+        
     }
 }
 
@@ -917,25 +922,38 @@ sup {
         white-space: nowrap;
         border: 1px solid rgba(255,255,255,0.2); /* Subtle border for definition */
     }
-}
+}       
 
 @media (max-width: 768px) {
-    .portfolio-card .label { 
-        background: #ffffff !important;
-        color: #0066b2 !important;
-        padding: 12px 25px !important;
-        border-radius: 50px !important; /* Rounded pill shape looks more like a button */
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important; /* Makes it "float" */
-        border: 2px solid #0066b2 !important; /* A solid border says "I am interactive" */
-        letter-spacing: 1px;
+    /* 1. Center the overlay content and give it some padding */
+    .card-overlay {
+        display: flex !important;
+        align-items: flex-end !important; /* Positions buttons at the bottom of the card */
+        justify-content: center !important;
+        padding-bottom: 20px !important;
+        background: rgba(0, 0, 0, 0.2) !important; /* Subtle dark tint to help button stand out */
     }
 
-    /* Provide a "Pulse" effect when tapped */
-    .portfolio-card:active .label {
+    /* 2. Style the text/headings inside the overlay to look like a Button */
+    .card-overlay h3, 
+    .card-overlay .label { 
+        background: #ffffff !important;
+        color: #0066b2 !important; /* Stellar Brand Blue */
+        padding: 10px 20px !important;
+        border-radius: 4px !important;
+        border: 2px solid #0066b2 !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 1px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+        display: inline-block !important;
+    }
+
+    /* 3. Give feedback when the user taps the card */
+    .portfolio-card:active .card-overlay h3 {
         background-color: #0066b2 !important;
         color: #ffffff !important;
-        transform: translateY(2px); /* Button actually "depresses" when touched */
+        transform: scale(0.95) !important;
     }
 }
