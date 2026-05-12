@@ -949,7 +949,7 @@ sup {
 
     .card-overlay h3, 
     .card-overlay .label { 
-        background: rgba(201, 201, 201, 0.9) !important; /* Light grey */
+        background: rgba(138, 138, 138, 0.9) !important; /* Light grey */
         color: #000000 !important;      /* Black text for contrast */
         padding: 6px 14px !important;   /* Compact sizing */
         font-size: 0.8rem !important;   /* Smaller font */
