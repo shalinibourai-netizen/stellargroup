@@ -924,52 +924,54 @@ sup {
     display: none !important; 
 }
 
-/* --- 2. MOBILE VIEW START --- */
 @media (max-width: 768px) {
-
-    /* Stack the box and button vertically */
+    /* 1. Reset the container to stack things properly */
     .card-overlay {
-        background: none !important;
+        background: none !important; /* Force remove the old white/grey box */
         backdrop-filter: none !important;
         display: flex !important;
         flex-direction: column !important; 
         align-items: center !important;
         justify-content: flex-end !important;
-        padding-bottom: 25px !important;
-        gap: 10px !important; 
+        
+        /* Increased padding so it doesn't get hidden by the browser bottom bar */
+        padding-bottom: 60px !important; 
+        height: 100% !important;
+        gap: 12px !important;
     }
 
-    /* The White Box for main heading */
+    /* 2. The White Title Box */
     .white-label-box {
         background: rgba(255, 255, 255, 0.95) !important;
-        padding: 6px 20px !important;
-        border-radius: 6px !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
-        min-width: 140px;
+        padding: 10px 25px !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+        min-width: 180px;
         text-align: center;
+        display: block !important;
     }
 
-    /* Text inside White Box */
     .portfolio-title {
         color: #000 !important;
-        font-size: 0.9rem !important;
+        font-size: 1.1rem !important; /* Made slightly bigger for readability */
         font-weight: 600 !important;
         margin: 0 !important;
-        text-transform: none !important; 
+        font-family: inherit;
     }
 
-    /* The Small Blue "know more" Button */
+    /* 3. The Small Blue Button */
     .blue-action-btn {
         display: inline-block !important;
-        background: #0066b2 !important; /* Your chosen blue */
+        background: #0066b2 !important;
         color: #ffffff !important;
-        padding: 4px 12px !important;
-        font-size: 0.65rem !important;
+        padding: 6px 18px !important;
+        font-size: 0.7rem !important;
         font-weight: 500 !important;
-        border-radius: 50px !important; /* Oval shape */
+        border-radius: 50px !important;
         text-decoration: none !important;
         text-transform: lowercase !important;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.2) !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+        white-space: nowrap;
     }
 }
-} /* This bracket closes the @media query. Make sure there isn't another one after it! */
+ /* This bracket closes the @media query. Make sure there isn't another one after it! */
