@@ -834,22 +834,19 @@ sup {
     }
 }
 
-/* --- DESKTOP: Keep things as they are & hide toggle --- */
+/* --- 1. GLOBAL SAFETY (Hides mobile elements on Desktop) --- */
 .nav-toggle, 
-.nav-toggle-label {
-    display: none; /* Desktop won't see the 3 lines */
-}
-
-/* 1. THE SAFETY LOCK (Place this at the top of your CSS) */
-.nav-toggle, 
-.nav-toggle-label {
+.nav-toggle-label,
+.blue-action-btn {
     display: none !important;
 }
 
-/* --- MOBILE: Trigger the Hamburger Menu --- */
+/* --- 2. MOBILE VIEW (Everything for phones goes here) --- */
 @media (max-width: 768px) {
+
+    /* --- HAMBURGER MENU STYLES --- */
     .nav-toggle-label {
-        display: flex; /* Show the 3 lines now */
+        display: flex !important;
         position: absolute;
         right: 25px;
         top: 25px;
@@ -857,16 +854,16 @@ sup {
         z-index: 1001;
     }
 
-    /* Draw the 3 lines */
     .nav-toggle-label span,
     .nav-toggle-label span::before,
     .nav-toggle-label span::after {
         display: block;
-        background: #333;
+        background: #000000;
         height: 2px;
         width: 25px;
         position: relative;
     }
+
     .nav-toggle-label span::before,
     .nav-toggle-label span::after {
         content: '';
@@ -875,36 +872,21 @@ sup {
     .nav-toggle-label span::before { top: -8px; }
     .nav-toggle-label span::after { bottom: 8px; }
 
-    /* Hide the list by default on mobile */
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%; /* Off-screen */
+        right: -100%;
         width: 80%;
         height: 100vh;
         background: #fff;
         flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
         transition: right 0.3s ease-in-out;
         z-index: 1000;
-        margin: 0 !important;
-        padding: 0 !important;
-        box-shadow: -10px 0 20px rgba(0,0,0,0.1);
     }
 
-    /* Show menu when clicked */
     .nav-toggle:checked ~ .nav-right-group .nav-links {
-        right: 0; /* Slides in */
+        right: 0;
     }
-
-    /* Animate hamburger to X when open */
-    .nav-toggle:checked + .nav-toggle-label span { background: transparent; }
-    .nav-toggle:checked + .nav-toggle-label span::before { transform: rotate(45deg); top: 0; }
-    .nav-toggle:checked + .nav-toggle-label span::after { transform: rotate(-45deg); bottom: 0; }
-    
-    .nav-toggle { display: none; }
-}
 
 /* Mobile Map Zoom Button */
 @media (max-width: 768px) {
@@ -937,34 +919,57 @@ sup {
     }
 }       
 
-/* The New Blue Oval Button */
-    .mobile-oval {
-        display: inline-block !important;
-        background: #0066b2 !important; 
-        color: #ffffff !important;
-        padding: 8px 25px !important;
-        font-size: 0.8rem !important;
-        border-radius: 50px !important;
-        text-decoration: none !important;
-        text-transform: none !important;
+/* --- 1. GLOBAL SAFETY (Hides blue button on Desktop) --- */
+.blue-action-btn { 
+    display: none !important; 
+}
+
+/* --- 2. MOBILE VIEW START --- */
+@media (max-width: 768px) {
+
+    /* Stack the box and button vertically */
+    .card-overlay {
+        background: none !important;
+        backdrop-filter: none !important;
+        display: flex !important;
+        flex-direction: column !important; 
+        align-items: center !important;
+        justify-content: flex-end !important;
+        padding-bottom: 25px !important;
+        gap: 10px !important; 
+    }
+
+    /* The White Box for main heading */
+    .white-label-box {
+        background: rgba(255, 255, 255, 0.95) !important;
+        padding: 6px 20px !important;
+        border-radius: 6px !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+        min-width: 140px;
+        text-align: center;
+    }
+
+    /* Text inside White Box */
+    .portfolio-title {
+        color: #000 !important;
+        font-size: 0.9rem !important;
         font-weight: 600 !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
-        margin-bottom: 8px !important;
+        margin: 0 !important;
+        text-transform: none !important; 
     }
 
-    /* The 'Know more' Arrow Link */
-    .mobile-know-more {
-        display: block !important;
+    /* The Small Blue "know more" Button */
+    .blue-action-btn {
+        display: inline-block !important;
+        background: #0066b2 !important; /* Your chosen blue */
         color: #ffffff !important;
-        font-size: 0.75rem !important;
-        text-decoration: none !important;
+        padding: 4px 12px !important;
+        font-size: 0.65rem !important;
         font-weight: 500 !important;
-        opacity: 0.9;
+        border-radius: 50px !important; /* Oval shape */
+        text-decoration: none !important;
+        text-transform: lowercase !important;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.2) !important;
     }
-
-    /* Interaction effect */
-    .mobile-oval:active {
-        transform: scale(0.95);
-        background: #004d85 !important;
-    }
+}
 } /* This bracket closes the @media query. Make sure there isn't another one after it! */
