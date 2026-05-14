@@ -834,77 +834,77 @@ sup {
     }
 }
 
-/* --- Final Mobile Header Polish --- */
+/* --- DESKTOP: Keep things as they are & hide toggle --- */
+.nav-toggle, 
+.nav-toggle-label {
+    display: none; /* Desktop won't see the 3 lines */
+}
+
+/* 1. THE SAFETY LOCK (Place this at the top of your CSS) */
+.nav-toggle, 
+.nav-toggle-label {
+    display: none !important;
+}
+
+/* --- MOBILE: Trigger the Hamburger Menu --- */
 @media (max-width: 768px) {
-    /* 1. Hide the Contact Button only on mobile */
-    .contact-btn {
-        display: none !important;
+    .nav-toggle-label {
+        display: flex; /* Show the 3 lines now */
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        cursor: pointer;
+        z-index: 1001;
     }
 
-    /* 2. Make the Navbar taller so the brand feels prominent */
-    .navbar {
-        height: auto !important;
-        padding: 20px 4% !important; /* Increased padding for more white space */
-        flex-direction: column !important;
-        gap: 15px !important;
+    /* Draw the 3 lines */
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        display: block;
+        background: #333;
+        height: 2px;
+        width: 25px;
+        position: relative;
     }
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+        content: '';
+        position: absolute;
+    }
+    .nav-toggle-label span::before { top: -8px; }
+    .nav-toggle-label span::after { bottom: 8px; }
 
-    /* 3. Make the Logo larger so it doesn't get lost */
-    .logo {
-        font-size: 2rem !important; /* Increase font size if it's text-based */
-        letter-spacing: 5px !important;
-        display: block !important;
-        text-align: center !important;
-    }
-    
-    /* If your logo is an image, use this instead: */
-    .logo img {
-        height: 50px !important; 
-        width: auto !important;
-    }
-
-    /* 4. Center the links neatly under the larger logo */
-    .nav-right-group {
-        width: 100% !important;
-        justify-content: center !important;
-        margin: 0 !important;
-    }
-
-/* ONLY affects screens smaller than 768px (Mobile) */
-@media (max-width: 768px) {
-    
-    /* 1. Center the Navigation Stack */
+    /* Hide the list by default on mobile */
     .nav-links {
-        display: flex !important;
-        flex-direction: column !important; /* Stack vertically */
-        align-items: center !important;    /* Center horizontally */
-        width: 100% !important;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Off-screen */
+        width: 80%;
+        height: 100vh;
+        background: #fff;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: right 0.3s ease-in-out;
+        z-index: 1000;
+        margin: 0 !important;
         padding: 0 !important;
-        margin: 0 auto !important;
-        list-style: none !important;
-        gap: 15px !important;              /* Uniform spacing */
+        box-shadow: -10px 0 20px rgba(0,0,0,0.1);
     }
 
-    .nav-links li {
-        width: 100% !important;
-        text-align: center !important;
+    /* Show menu when clicked */
+    .nav-toggle:checked ~ .nav-right-group .nav-links {
+        right: 0; /* Slides in */
     }
 
-    .nav-links a {
-        font-size: 0.85rem !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        color: #000 !important;
-        display: inline-block !important;
-    }
-
-    /* Make the Contact Button look like a normal link on mobile */
-    .contact-btn {
-        background: none !important;
-        border: none !important;
-        padding: 0 !important;
-        box-shadow: none !important;
-    }
+    /* Animate hamburger to X when open */
+    .nav-toggle:checked + .nav-toggle-label span { background: transparent; }
+    .nav-toggle:checked + .nav-toggle-label span::before { transform: rotate(45deg); top: 0; }
+    .nav-toggle:checked + .nav-toggle-label span::after { transform: rotate(-45deg); bottom: 0; }
+    
+    .nav-toggle { display: none; }
+}
 
 /* Mobile Map Zoom Button */
 @media (max-width: 768px) {
@@ -937,36 +937,34 @@ sup {
     }
 }       
 
-/* 2. Portfolio Labels: Light Grey, Small, No Caps */
-    .card-overlay {
-        background: none !important;
-        backdrop-filter: none !important; /* Removes blur */
-        display: flex !important;
-        align-items: flex-end !important;
-        justify-content: center !important;
-        padding-bottom: 15px !important; /* Slightly tighter spacing */
-    }
-
-    .card-overlay h3, 
-    .card-overlay .label { 
-        background: rgba(192, 191, 191, 0.9) !important; /* Light grey */
-        color: #000000 !important;      /* Black text for contrast */
-        padding: 6px 14px !important;   /* Compact sizing */
-        font-size: 0.8rem !important;   /* Smaller font */
-        border-radius: 6px !important;
-        border: none !important;        /* No outline */
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
-        
-        /* Text styling */
-        text-transform: none !important; /* Removes All Caps */
-        font-weight: 500 !important;     /* Medium weight for readability */
-        margin: 0 !important;
+/* The New Blue Oval Button */
+    .mobile-oval {
         display: inline-block !important;
+        background: #0066b2 !important; 
+        color: #ffffff !important;
+        padding: 8px 25px !important;
+        font-size: 0.8rem !important;
+        border-radius: 50px !important;
+        text-decoration: none !important;
+        text-transform: none !important;
+        font-weight: 600 !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+        margin-bottom: 8px !important;
     }
 
-    /* Add a small hover/active effect for feedback */
-    .portfolio-card:active .card-overlay h3 {
-        background: rgba(220, 220, 220, 1) !important;
-        transform: scale(0.98);
+    /* The 'Know more' Arrow Link */
+    .mobile-know-more {
+        display: block !important;
+        color: #ffffff !important;
+        font-size: 0.75rem !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        opacity: 0.9;
     }
-}
+
+    /* Interaction effect */
+    .mobile-oval:active {
+        transform: scale(0.95);
+        background: #004d85 !important;
+    }
+} /* This bracket closes the @media query. Make sure there isn't another one after it! */
