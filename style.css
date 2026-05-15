@@ -174,12 +174,10 @@ body {
     bottom: 20px;
     left: 20px;
    
-    width: fit-content;        /* This makes the box only as wide as the text */
-    max-width: calc(100% - 40px); /* Prevents it from going off-edge on small cards */
-    
-    /* THE STRIP LOOK */
+    width: fit-content;
+    max-width: calc(100% - 40px); 
     background: rgba(255, 255, 255, 0.85) !important; /* White transparent */
-    backdrop-filter: trasparent rgba(..., 0.9);
+    backdrop-filter: trasparent rgba(0.9);
     -webkit-backdrop-filter: blur(10px);
     
     padding: 10px 20px;
