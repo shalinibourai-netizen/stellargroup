@@ -869,66 +869,71 @@ sup {
         justify-content: center !important;
         margin: 0 !important;
     }
-
 /* --- MOBILE ONLY VIEW (Screens 768px and below) --- */
 @media (max-width: 768px) {
     
+    /* 1. Force the Navbar to be a single row (Fixed the stacking) */
     .navbar {
         display: flex !important;
+        flex-direction: row !important; /* Forces it horizontal */
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 15px 20px !important;
-        position: relative !important; /* Required for absolute centering */
-        height: 80px !important; 
+        padding: 10px 20px !important;
+        position: relative !important;
+        height: 70px !important;
+        background-color: #fff !important; /* Adjust if needed */
     }
 
-    /* 1. Center the Logo exactly like YGR */
+    /* 2. Hide the text links that are currently stacking in the middle */
+    .nav-right-group, .nav-links {
+        display: none !important; 
+    }
+
+    /* 3. Center the Logo exactly like the YGR screenshot */
     .logo {
         position: absolute !important;
         left: 50% !important;
-        transform: translateX(-50%) !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
         margin: 0 !important;
-        display: block !important;
-    }
-
-    .logo img {
-        height: 40px !important; /* Adjust based on your logo size */
         width: auto !important;
     }
 
-    /* 2. Hide the text links group */
-    .nav-right-group {
-        display: none !important;
+    .logo img {
+        height: 35px !important; /* Adjust logo size for mobile */
+        width: auto !important;
+        display: block !important;
     }
 
-    /* 3. The Hamburger Button (Right Side) */
+    /* 4. The Hamburger Menu (Right Side) */
     .hamburger-menu {
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        width: 28px !important;
-        height: 18px !important;
+        width: 25px !important;
+        height: 16px !important;
         background: transparent !important;
         border: none !important;
         cursor: pointer !important;
-        margin-left: auto !important; /* Ensures it stays on the right */
+        margin-left: auto !important; /* Pushes to far right */
         padding: 0 !important;
+        z-index: 100 !important;
     }
 
-    /* The 3 white/black lines */
+    /* Hamburger Lines */
     .hamburger-menu span {
         display: block !important;
         width: 100% !important;
         height: 2px !important;
-        background-color: #000 !important; /* Match your logo color */
-        border-radius: 4px !important;
+        background-color: #004e92 !important; /* Using your Stellar Blue color */
+        border-radius: 2px !important;
     }
 }
 
-/* --- DESKTOP VIEW FIX --- */
+/* --- DESKTOP RESET --- */
 @media (min-width: 769px) {
     .hamburger-menu {
-        display: none !important; /* Hide it on desktop */
+        display: none !important;
     }
 }
 
