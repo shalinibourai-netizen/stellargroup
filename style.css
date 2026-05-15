@@ -897,48 +897,53 @@ sup {
 }       
 
 @media (max-width: 768px) {
-    /* 1. Reset the overlay to remove extra boxes/outlines */
+    /* 1. Reset the container to stack things properly */
     .card-overlay {
-        background: none !important;
+        background: none !important; /* Force remove the old white/grey box */
         backdrop-filter: none !important;
-        border: none !important;
-        box-shadow: none !important;
         display: flex !important;
-        align-items: flex-end !important;
-        justify-content: center !important;
-        padding-bottom: 40px !important; /* Lifts the bar up slightly */
+        flex-direction: column !important; 
+        align-items: center !important;
+        justify-content: flex-end !important;
+        
+        /* Increased padding so it doesn't get hidden by the browser bottom bar */
+        padding-bottom: 60px !important; 
+        height: 100% !important;
+        gap: 12px !important;
     }
 
-    /* 2. The Sleek White Bar */
+    /* 2. The White Title Box */
     .white-label-box {
-        background: #ffffff !important;
+        background: rgba(255, 255, 255, 0.95) !important;
         padding: 10px 25px !important;
         border-radius: 8px !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-        min-width: 200px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+        min-width: 180px;
         text-align: center;
-        border: none !important; /* Removes any long outlines */
+        display: block !important;
     }
 
-    /* 3. Text & Arrow Styling */
-    .portfolio-link {
-        color: #000000 !important;
+    .portfolio-title {
+        color: #000 !important;
+        font-size: 1.1rem !important; /* Made slightly bigger for readability */
+        font-weight: 600 !important;
+        margin: 0 !important;
+        font-family: inherit;
+    }
+
+    /* 3. The Small Blue Button */
+    .blue-action-btn {
+        display: inline-block !important;
+        background: #0066b2 !important;
+        color: #ffffff !important;
+        padding: 6px 18px !important;
+        font-size: 0.7rem !important;
+        font-weight: 500 !important;
+        border-radius: 50px !important;
         text-decoration: none !important;
-        font-size: 1.1rem !important;
-        font-weight: 700 !important;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .portfolio-link .arrow {
-        font-size: 1.3rem;
-        color: #0066b2; /* Making the arrow your brand blue for a pop of color */
-    }
-
-    /* 4. Completely hide the old blue button */
-    .blue-action-btn, .know-more-text {
-        display: none !important;
+        text-transform: lowercase !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+        white-space: nowrap;
     }
 }
+ /* This bracket closes the @media query. Make sure there isn't another one after it! */
