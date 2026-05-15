@@ -22,34 +22,41 @@
             <li><a href="#about">Our Legacy</a></li>
             <li><a href="#culture">Our Culture</a></li>
             <li><a href="#footprint">Our Footprint</a></li>
-            <li class="mobile-contact"><a href="#contact" class="contact-btn">Contact Us</a></li>
-            <li class="mobile-only-contact"><a href="#contact">Contact Us</a></li>
+            <li class="mobile-only"><a href="#contact">Contact Us</a></li>
         </ul>
     </div>
 
-    <button class="hamburger-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+    <div class="menu-toggle">
+        <button class="hamburger-menu">
+            <span></span><span></span><span></span>
+        </button>
+        <button class="close-menu">
+            <span></span><span></span>
+        </button>
+    </div>
 </nav>
 <script>
-    // Target the specific hamburger and menu inside the navbar
-    const hamburger = document.querySelector('.navbar .hamburger-menu');
-    const navMenu = document.querySelector('.navbar .nav-right-group');
+    // 1. Target the main navbar and the toggle container
+    const navbar = document.querySelector('.navbar');
+    const toggleContainer = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-right-group');
 
-    if(hamburger && navMenu) {
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevents click from bubbling
+    // 2. Add the click event to the WHOLE toggle container (Hamburger + X)
+    if(toggleContainer && navMenu) {
+        toggleContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // This toggles the menu visibility
             navMenu.classList.toggle('active');
-            console.log("Menu toggled"); // Useful for debugging
+            // This allows CSS to swap Hamburger for the X icon
+            navbar.classList.toggle('menu-open');
         });
     }
 
-    // Close menu when a link is clicked
+    // 3. Auto-close the menu when any link (including Contact Us) is clicked
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
+            navbar.classList.remove('menu-open');
         });
     });
 </script>
