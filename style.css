@@ -982,8 +982,21 @@ sup {
         font-size: 0.9rem !important;
         text-decoration: none !important;
     }
+/* Ensure the Contact Us link shows up in the mobile menu */
+.nav-links li.mobile-only {
+    display: block !important;
+}
 
-    /* Toggle Lines into X Animation */
+/* Optional: Make it look like a button in the mobile list */
+.nav-links li.mobile-only a {
+    background-color: #d4af37 !important; /* Gold background */
+    color: #000 !important;
+    padding: 12px 24px !important;
+    border-radius: 50px !important;
+    display: inline-block !important;
+    margin: 10px 0 !important;
+}
+ /* Toggle Lines into X Animation */
     .nav-right-group.active ~ .hamburger-menu span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .nav-right-group.active ~ .hamburger-menu span:nth-child(2) { opacity: 0; }
     .nav-right-group.active ~ .hamburger-menu span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -1055,9 +1068,76 @@ sup {
         justify-content: center; 
     }
 
-} /* End of Media Query */
+} /* This extra bracket ensures the mobile section is CLOSED */
 
-/* Desktop Specific */
-@media (min-width: 769px) {
-    .hamburger-menu { display: none !important; }
+/* --- DESKTOP VIEW --- */
+@media screen and (min-width: 769px) {
+    .navbar {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 40px !important;
+        box-sizing: border-box !important;
+    }
+
+   .nav-right-group {
+        display: flex !important;
+        align-items: center !important; 
+        height: 100% !important; /* Forces the group to use the full navbar height */
+        margin-left: auto !important;
+    }
+    
+    .nav-links {
+        display: flex !important;
+        align-items: center !important; /* Centers individual text links */
+        gap: 2.5rem !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+   .nav-links li:has(.contact-btn) {
+    display: flex !important;
+    align-items: center !important;
+}
+  .nav-links li a.contact-btn {
+    vertical-align: middle !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.contact-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 45px !important;
+    /* This line is the most important: it stops the text from being pushed up */
+    padding: 0 25px !important;
+    margin: 0 !important; 
+    line-height: 1 !important;
+    text-decoration: none !important;
+}
+
+    .menu-toggle {
+        display: none !important;
+    }
+}
+
+/* This goes at the bottom of your entire CSS file */
+@media screen and (max-width: 768px) {
+    .card-overlay h3 a::after {
+        content: " \2192" !important; 
+        display: inline-block !important;
+        margin-left: 8px !important;
+        color: #000 !important;
+        font-weight: bold !important;
+        font-size: 1.2rem !important;
+    }
+
+    .card-overlay h3 a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
 }
