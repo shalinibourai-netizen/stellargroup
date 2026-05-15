@@ -838,12 +838,11 @@ sup {
     .navbar {
         display: flex !important;
         flex-direction: row !important;
-        justify-content: center !important; 
+        justify-content: flex-end !important; /* Pushes toggle group to the right */
         align-items: center !important;
         height: 100px !important;
         padding: 0 20px !important;
         position: relative !important;
-        background-color: #f0f0f0 !important;
     }
 
     /* 2. CENTERED LOGO */
@@ -861,27 +860,53 @@ sup {
         width: auto !important;
     }
 
-    /* 3. Hamburger on the Right */
-    .hamburger-menu {
+    /* 3. Toggle Group: Far Right */
+    .menu-toggle {
+        margin-left: auto !important;
+        z-index: 100 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* 4. Button Cleanup: Removes stray white lines/borders */
+    .hamburger-menu, .close-menu {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        cursor: pointer !important;
+        outline: none !important;
+    }
+
+.hamburger-menu {
+        /* 1. Remove the white box/line background */
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        
+        /* 2. Positioning (Move it to the right so it doesn't touch the logo) */
+        position: absolute !important;
+        right: 20px !important; 
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        
+        /* 3. Sizing */
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        width: 28px !important;
-        height: 18px !important;
-        background: none !important;
-        border: none !important;
-        cursor: pointer !important;
-        margin-left: auto !important; /* Pushes to the right */
+        width: 30px !important;
+        height: 20px !important;
         padding: 0 !important;
-        z-index: 20;
+        cursor: pointer !important;
+        z-index: 100 !important;
     }
 
-    .hamburger-menu span {
+   .hamburger-menu span {
         width: 100% !important;
-        height: 2px !important;
-        background-color: #1a1a1a;
+        height: 3px !important; /* Bold enough to see */
+        background-color: #000000 !important; /* Pure black lines */
+        display: block !important;
         border-radius: 2px !important;
-        transition: 0.3s ease;
     }
 
     /* 4. Dropdown Menu */
