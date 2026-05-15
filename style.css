@@ -832,30 +832,22 @@ sup {
     }
 }
 
-/* --- CLEAN MOBILE ONLY HEADER (768px and below) --- */
 @media (max-width: 768px) {
-    
-    /* 1. Header Container: 100px height, centered logo, icons on right */
     .navbar {
         display: flex !important;
-        flex-direction: row !important; /* Force horizontal like YGR */
-        justify-content: space-between !important;
+        flex-direction: row !important; 
+        justify-content: center !important; 
         align-items: center !important;
+        height: 100px !important;
         padding: 0 20px !important;
-        position: relative !important;
-        height: 100px !important; 
-        background-color: #fff !important;
-        z-index: 1000 !important;
+        position: relative !important; /* This is REQUIRED to anchor the centered logo */
     }
-
-    /* 2. Logo: Perfectly centered and slightly smaller */
     .logo {
-        position: absolute !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        margin: 0 !important;
-        z-index: 10;
+    position: absolute !important; /* This forces it to ignore the other items */
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important; /* This creates the dead-center look */
+    display: flex !important;
     }
 
     .logo img {
