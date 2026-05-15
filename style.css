@@ -834,77 +834,50 @@ sup {
     }
 }
 
-/* --- Final Mobile Header Polish --- */
+/* --- CLEAN MOBILE ONLY HEADER (768px and below) --- */
 @media (max-width: 768px) {
-    /* 1. Hide the Contact Button only on mobile */
-    .contact-btn {
-        display: none !important;
-    }
-
-    /* 2. Make the Navbar taller so the brand feels prominent */
-    .navbar {
-        height: auto !important;
-        padding: 20px 4% !important; /* Increased padding for more white space */
-        flex-direction: column !important;
-        gap: 15px !important;
-    }
-
-    /* 3. Make the Logo larger so it doesn't get lost */
-    .logo {
-        font-size: 2rem !important; /* Increase font size if it's text-based */
-        letter-spacing: 5px !important;
-        display: block !important;
-        text-align: center !important;
-    }
     
-    /* If your logo is an image, use this instead: */
-    .logo img {
-        height: 50px !important; 
-        width: auto !important;
-    }
-
-    /* 4. Center the links neatly under the larger logo */
-    .nav-right-group {
-        width: 100% !important;
-        justify-content: center !important;
-        margin: 0 !important;
-    }
-
-@media (max-width: 768px) {
-    /* 1. Increased Header Height */
+    /* 1. Header Container: 100px height, centered logo, icons on right */
     .navbar {
         display: flex !important;
-        flex-direction: row !important;
+        flex-direction: row !important; /* Force horizontal like YGR */
         justify-content: space-between !important;
         align-items: center !important;
         padding: 0 20px !important;
         position: relative !important;
-        height: 100px !important; /* Increased height as requested */
+        height: 100px !important; 
         background-color: #fff !important;
         z-index: 1000 !important;
     }
 
-    /* 2. Center the Logo */
+    /* 2. Logo: Perfectly centered and slightly smaller */
     .logo {
         position: absolute !important;
         left: 50% !important;
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+        z-index: 10;
     }
 
-    /* 3. The Dropdown Menu (Hidden by default) */
+    .logo img {
+        height: 30px !important; /* "Slightly small" branding */
+        width: auto !important;
+    }
+
+    /* 3. The Dropdown Menu: Hidden until .active class is added */
     .nav-right-group {
-        display: none; /* Hidden until toggled */
+        display: none; 
         position: absolute !important;
-        top: 100px !important; /* Starts right at the bottom of header */
+        top: 100px !important; /* Opens exactly under the header */
         left: 0 !important;
         width: 100% !important;
         background-color: #fff !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
         z-index: 999 !important;
     }
 
-    /* Show class for JS to toggle */
+    /* Show the menu when JS toggles the class */
     .nav-right-group.active {
         display: block !important;
     }
@@ -912,50 +885,62 @@ sup {
     .nav-links {
         display: flex !important;
         flex-direction: column !important;
-        padding: 20px 0 !important;
-        margin: 0 !important;
+        padding: 10px 0 !important;
         list-style: none !important;
+        margin: 0 !important;
     }
 
     .nav-links li {
         text-align: center !important;
-        padding: 15px 0 !important;
-        border-bottom: 1px solid #f0f0f0 !important;
+        padding: 20px 0 !important;
+        border-bottom: 1px solid #f2f2f2 !important;
     }
 
     .nav-links li a {
         color: #000 !important;
-        text-decoration: none !important;
-        font-weight: 600 !important;
+        font-weight: 700 !important; /* Bold like YGR */
         text-transform: uppercase !important;
+        font-size: 0.9rem !important;
+        text-decoration: none !important;
     }
 
-    /* 4. The Hamburger */
+    /* 4. Icon Toggling (Hamburger to X) */
     .hamburger-menu {
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        width: 30px !important;
-        height: 20px !important;
+        width: 28px !important;
+        height: 18px !important;
         background: none !important;
         border: none !important;
         cursor: pointer !important;
-        margin-left: auto !important;
+        margin-left: auto !important; /* Stays on the right */
+        padding: 0 !important;
     }
 
     .hamburger-menu span {
         width: 100% !important;
-        height: 3px !important;
-        background-color: #004e92 !important;
+        height: 2px !important;
+        background-color: #1a1a1a;
         border-radius: 2px !important;
+        transition: 0.3s ease; /* For smooth X transition */
+    }
+
+    /* Turn the 3 lines into an X when active */
+    .nav-right-group.active ~ .hamburger-menu span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .nav-right-group.active ~ .hamburger-menu span:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-right-group.active ~ .hamburger-menu span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
-@media (max-width: 768px) {
-    /* Your other mobile styles... */
 
-    .nav-right-group.active {
-        display: block !important;
-    }
+/* --- DESKTOP VIEW: Hide Hamburger --- */
+@media (min-width: 769px) {
+    .hamburger-menu { display: none !important; }
 }
 
 /* Mobile Map Zoom Button */
