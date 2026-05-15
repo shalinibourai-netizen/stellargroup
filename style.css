@@ -841,63 +841,40 @@ sup {
     display: none !important;
 }
 
-/* --- 2. MOBILE VIEW (Everything for phones goes here) --- */
 @media (max-width: 768px) {
+    /* This pushes Logo to Left and Hamburger to Right */
+    nav, .nav-container { 
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 20px !important;
+        width: 100% !important;
+    }
 
-    /* --- HAMBURGER MENU STYLES --- */
+    /* Fix the "Two Lines" issue - making them 3 clear lines */
     .nav-toggle-label {
         display: flex !important;
-        position: absolute;
-        right: 25px;
-        top: 25px;
-        cursor: pointer;
-        z-index: 1001;
+        flex-direction: column !important;
+        justify-content: center !important;
+        height: 30px !important;
+        width: 30px !important;
     }
 
     .nav-toggle-label span,
     .nav-toggle-label span::before,
     .nav-toggle-label span::after {
-        display: block;
-        background: #000000;
-        height: 2px;
-        width: 25px;
-        position: relative;
+        background: #000000 !important;
+        height: 2px !important; /* Thickness of lines */
+        width: 25px !important;
+        transition: all 0.3s ease !important;
     }
 
-    .nav-toggle-label span::before,
-    .nav-toggle-label span::after {
-        content: '';
-        position: absolute;
-    }
-    .nav-toggle-label span::before { top: -8px; }
-    .nav-toggle-label span::after { bottom: 8px; }
+    /* Position the top and bottom lines to show 3 total */
+    .nav-toggle-label span::before { top: -8px !important; }
+    .nav-toggle-label span::after { bottom: -8px !important; }
+}
 
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: #fff;
-        flex-direction: column !important;
-        transition: right 0.3s ease-in-out;
-        z-index: 1000;
-    }
-
-    .nav-toggle:checked ~ .nav-right-group .nav-links {
-        right: 0;
-    }
-
-/* Mobile Map Zoom Button */
-@media (max-width: 768px) {
-    .map-wrapper {
-        position: relative;
-        display: block;
-        cursor: pointer;
-    }
-
-    /* This creates the visible button people will see */
-  /* Refined Mobile Map Zoom Button */
+/* Refined Mobile Map Zoom Button */
 @media (max-width: 768px) {
     .map-wrapper::after {
         content: '🔍 Tap to Zoom'; /* Shortened text to save space */
@@ -919,59 +896,49 @@ sup {
     }
 }       
 
-/* --- 1. GLOBAL SAFETY (Hides blue button on Desktop) --- */
-.blue-action-btn { 
-    display: none !important; 
-}
-
 @media (max-width: 768px) {
-    /* 1. Reset the container to stack things properly */
+    /* 1. Reset the overlay to remove extra boxes/outlines */
     .card-overlay {
-        background: none !important; /* Force remove the old white/grey box */
+        background: none !important;
         backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
         display: flex !important;
-        flex-direction: column !important; 
-        align-items: center !important;
-        justify-content: flex-end !important;
-        
-        /* Increased padding so it doesn't get hidden by the browser bottom bar */
-        padding-bottom: 60px !important; 
-        height: 100% !important;
-        gap: 12px !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        padding-bottom: 40px !important; /* Lifts the bar up slightly */
     }
 
-    /* 2. The White Title Box */
+    /* 2. The Sleek White Bar */
     .white-label-box {
-        background: rgba(255, 255, 255, 0.95) !important;
+        background: #ffffff !important;
         padding: 10px 25px !important;
         border-radius: 8px !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
-        min-width: 180px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        min-width: 200px;
         text-align: center;
-        display: block !important;
+        border: none !important; /* Removes any long outlines */
     }
 
-    .portfolio-title {
-        color: #000 !important;
-        font-size: 1.1rem !important; /* Made slightly bigger for readability */
-        font-weight: 600 !important;
-        margin: 0 !important;
-        font-family: inherit;
-    }
-
-    /* 3. The Small Blue Button */
-    .blue-action-btn {
-        display: inline-block !important;
-        background: #0066b2 !important;
-        color: #ffffff !important;
-        padding: 6px 18px !important;
-        font-size: 0.7rem !important;
-        font-weight: 500 !important;
-        border-radius: 50px !important;
+    /* 3. Text & Arrow Styling */
+    .portfolio-link {
+        color: #000000 !important;
         text-decoration: none !important;
-        text-transform: lowercase !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
-        white-space: nowrap;
+        font-size: 1.1rem !important;
+        font-weight: 700 !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .portfolio-link .arrow {
+        font-size: 1.3rem;
+        color: #0066b2; /* Making the arrow your brand blue for a pop of color */
+    }
+
+    /* 4. Completely hide the old blue button */
+    .blue-action-btn, .know-more-text {
+        display: none !important;
     }
 }
- /* This bracket closes the @media query. Make sure there isn't another one after it! */
