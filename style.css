@@ -877,6 +877,42 @@ sup {
         outline: none !important;
     }
 
+    /* --- 4. The X Icon Logic --- */
+    .close-menu {
+        display: none !important; /* Hidden until menu-open class is active */
+        position: absolute !important;
+        right: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 30px !important;
+        height: 30px !important;
+        z-index: 101 !important;
+    }
+
+    .close-menu span {
+        position: absolute;
+        width: 25px !important;
+        height: 3px !important;
+        background-color: #000000 !important;
+        left: 2px;
+        top: 13px;
+    }
+
+    /* Create the X shape by rotating the two spans */
+    .close-menu span:nth-child(1) { transform: rotate(45deg); }
+    .close-menu span:nth-child(2) { transform: rotate(-45deg); }
+
+    /* Switch icons when menu is open */
+    .navbar.menu-open .hamburger-menu { 
+        display: none !important; 
+    }
+    
+    .navbar.menu-open .close-menu { 
+        display: flex !important; 
+        align-items: center; 
+        justify-content: center; 
+    }
+
 .hamburger-menu {
         /* 1. Remove the white box/line background */
         background: transparent !important;
@@ -1012,6 +1048,13 @@ sup {
         background: rgba(220, 220, 220, 1) !important;
         transform: scale(0.98);
     }
+
+.navbar.menu-open .close-menu { 
+        display: flex !important; 
+        align-items: center; 
+        justify-content: center; 
+    }
+
 } /* End of Media Query */
 
 /* Desktop Specific */
