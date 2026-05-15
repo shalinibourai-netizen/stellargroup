@@ -870,41 +870,67 @@ sup {
         margin: 0 !important;
     }
 
-/* ONLY affects screens smaller than 768px (Mobile) */
+/* --- MOBILE ONLY VIEW (Screens 768px and below) --- */
 @media (max-width: 768px) {
     
-    /* 1. Center the Navigation Stack */
-    .nav-links {
+    .navbar {
         display: flex !important;
-        flex-direction: column !important; /* Stack vertically */
-        align-items: center !important;    /* Center horizontally */
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 auto !important;
-        list-style: none !important;
-        gap: 15px !important;              /* Uniform spacing */
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 15px 20px !important;
+        position: relative !important; /* Required for absolute centering */
+        height: 80px !important; 
     }
 
-    .nav-links li {
-        width: 100% !important;
-        text-align: center !important;
+    /* 1. Center the Logo exactly like YGR */
+    .logo {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        display: block !important;
     }
 
-    .nav-links a {
-        font-size: 0.85rem !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        color: #000 !important;
-        display: inline-block !important;
+    .logo img {
+        height: 40px !important; /* Adjust based on your logo size */
+        width: auto !important;
     }
 
-    /* Make the Contact Button look like a normal link on mobile */
-    .contact-btn {
-        background: none !important;
+    /* 2. Hide the text links group */
+    .nav-right-group {
+        display: none !important;
+    }
+
+    /* 3. The Hamburger Button (Right Side) */
+    .hamburger-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 28px !important;
+        height: 18px !important;
+        background: transparent !important;
         border: none !important;
+        cursor: pointer !important;
+        margin-left: auto !important; /* Ensures it stays on the right */
         padding: 0 !important;
-        box-shadow: none !important;
     }
+
+    /* The 3 white/black lines */
+    .hamburger-menu span {
+        display: block !important;
+        width: 100% !important;
+        height: 2px !important;
+        background-color: #000 !important; /* Match your logo color */
+        border-radius: 4px !important;
+    }
+}
+
+/* --- DESKTOP VIEW FIX --- */
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none !important; /* Hide it on desktop */
+    }
+}
 
 /* Mobile Map Zoom Button */
 @media (max-width: 768px) {
