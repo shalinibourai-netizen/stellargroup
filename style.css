@@ -834,47 +834,88 @@ sup {
     }
 }
 
-/* --- 1. GLOBAL SAFETY (Hides mobile elements on Desktop) --- */
-.nav-toggle, 
-.nav-toggle-label,
-.blue-action-btn {
-    display: none !important;
-}
-
+/* --- Final Mobile Header Polish --- */
 @media (max-width: 768px) {
-    /* This pushes Logo to Left and Hamburger to Right */
-    nav, .nav-container { 
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 10px 20px !important;
-        width: 100% !important;
+    /* 1. Hide the Contact Button only on mobile */
+    .contact-btn {
+        display: none !important;
     }
 
-    /* Fix the "Two Lines" issue - making them 3 clear lines */
-    .nav-toggle-label {
-        display: flex !important;
+    /* 2. Make the Navbar taller so the brand feels prominent */
+    .navbar {
+        height: auto !important;
+        padding: 20px 4% !important; /* Increased padding for more white space */
         flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    /* 3. Make the Logo larger so it doesn't get lost */
+    .logo {
+        font-size: 2rem !important; /* Increase font size if it's text-based */
+        letter-spacing: 5px !important;
+        display: block !important;
+        text-align: center !important;
+    }
+    
+    /* If your logo is an image, use this instead: */
+    .logo img {
+        height: 50px !important; 
+        width: auto !important;
+    }
+
+    /* 4. Center the links neatly under the larger logo */
+    .nav-right-group {
+        width: 100% !important;
         justify-content: center !important;
-        height: 30px !important;
-        width: 30px !important;
+        margin: 0 !important;
     }
 
-    .nav-toggle-label span,
-    .nav-toggle-label span::before,
-    .nav-toggle-label span::after {
-        background: #000000 !important;
-        height: 2px !important; /* Thickness of lines */
-        width: 25px !important;
-        transition: all 0.3s ease !important;
+/* ONLY affects screens smaller than 768px (Mobile) */
+@media (max-width: 768px) {
+    
+    /* 1. Center the Navigation Stack */
+    .nav-links {
+        display: flex !important;
+        flex-direction: column !important; /* Stack vertically */
+        align-items: center !important;    /* Center horizontally */
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        list-style: none !important;
+        gap: 15px !important;              /* Uniform spacing */
     }
 
-    /* Position the top and bottom lines to show 3 total */
-    .nav-toggle-label span::before { top: -8px !important; }
-    .nav-toggle-label span::after { bottom: -8px !important; }
-}
+    .nav-links li {
+        width: 100% !important;
+        text-align: center !important;
+    }
 
-/* Refined Mobile Map Zoom Button */
+    .nav-links a {
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        color: #000 !important;
+        display: inline-block !important;
+    }
+
+    /* Make the Contact Button look like a normal link on mobile */
+    .contact-btn {
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+/* Mobile Map Zoom Button */
+@media (max-width: 768px) {
+    .map-wrapper {
+        position: relative;
+        display: block;
+        cursor: pointer;
+    }
+
+    /* This creates the visible button people will see */
+  /* Refined Mobile Map Zoom Button */
 @media (max-width: 768px) {
     .map-wrapper::after {
         content: '🔍 Tap to Zoom'; /* Shortened text to save space */
@@ -896,54 +937,36 @@ sup {
     }
 }       
 
-@media (max-width: 768px) {
-    /* 1. Reset the container to stack things properly */
+/* 2. Portfolio Labels: Light Grey, Small, No Caps */
     .card-overlay {
-        background: none !important; /* Force remove the old white/grey box */
-        backdrop-filter: none !important;
+        background: none !important;
+        backdrop-filter: none !important; /* Removes blur */
         display: flex !important;
-        flex-direction: column !important; 
-        align-items: center !important;
-        justify-content: flex-end !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        padding-bottom: 15px !important; /* Slightly tighter spacing */
+    }
+
+    .card-overlay h3, 
+    .card-overlay .label { 
+        background: rgba(192, 191, 191, 0.9) !important; /* Light grey */
+        color: #000000 !important;      /* Black text for contrast */
+        padding: 6px 14px !important;   /* Compact sizing */
+        font-size: 0.8rem !important;   /* Smaller font */
+        border-radius: 6px !important;
+        border: none !important;        /* No outline */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
         
-        /* Increased padding so it doesn't get hidden by the browser bottom bar */
-        padding-bottom: 60px !important; 
-        height: 100% !important;
-        gap: 12px !important;
-    }
-
-    /* 2. The White Title Box */
-    .white-label-box {
-        background: rgba(255, 255, 255, 0.95) !important;
-        padding: 10px 25px !important;
-        border-radius: 8px !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
-        min-width: 180px;
-        text-align: center;
-        display: block !important;
-    }
-
-    .portfolio-title {
-        color: #000 !important;
-        font-size: 1.1rem !important; /* Made slightly bigger for readability */
-        font-weight: 600 !important;
+        /* Text styling */
+        text-transform: none !important; /* Removes All Caps */
+        font-weight: 500 !important;     /* Medium weight for readability */
         margin: 0 !important;
-        font-family: inherit;
+        display: inline-block !important;
     }
 
-    /* 3. The Small Blue Button */
-    .blue-action-btn {
-        display: inline-block !important;
-        background: #0066b2 !important;
-        color: #ffffff !important;
-        padding: 6px 18px !important;
-        font-size: 0.7rem !important;
-        font-weight: 500 !important;
-        border-radius: 50px !important;
-        text-decoration: none !important;
-        text-transform: lowercase !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
-        white-space: nowrap;
+    /* Add a small hover/active effect for feedback */
+    .portfolio-card:active .card-overlay h3 {
+        background: rgba(220, 220, 220, 1) !important;
+        transform: scale(0.98);
     }
 }
- /* This bracket closes the @media query. Make sure there isn't another one after it! */
