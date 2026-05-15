@@ -869,71 +869,92 @@ sup {
         justify-content: center !important;
         margin: 0 !important;
     }
-/* --- MOBILE ONLY VIEW (Screens 768px and below) --- */
+
 @media (max-width: 768px) {
-    
-    /* 1. Force the Navbar to be a single row (Fixed the stacking) */
+    /* 1. Increased Header Height */
     .navbar {
         display: flex !important;
-        flex-direction: row !important; /* Forces it horizontal */
+        flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 10px 20px !important;
+        padding: 0 20px !important;
         position: relative !important;
-        height: 70px !important;
-        background-color: #fff !important; /* Adjust if needed */
+        height: 100px !important; /* Increased height as requested */
+        background-color: #fff !important;
+        z-index: 1000 !important;
     }
 
-    /* 2. Hide the text links that are currently stacking in the middle */
-    .nav-right-group, .nav-links {
-        display: none !important; 
-    }
-
-    /* 3. Center the Logo exactly like the YGR screenshot */
+    /* 2. Center the Logo */
     .logo {
         position: absolute !important;
         left: 50% !important;
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
-        margin: 0 !important;
-        width: auto !important;
     }
 
-    .logo img {
-        height: 35px !important; /* Adjust logo size for mobile */
-        width: auto !important;
+    /* 3. The Dropdown Menu (Hidden by default) */
+    .nav-right-group {
+        display: none; /* Hidden until toggled */
+        position: absolute !important;
+        top: 100px !important; /* Starts right at the bottom of header */
+        left: 0 !important;
+        width: 100% !important;
+        background-color: #fff !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+        z-index: 999 !important;
+    }
+
+    /* Show class for JS to toggle */
+    .nav-right-group.active {
         display: block !important;
     }
 
-    /* 4. The Hamburger Menu (Right Side) */
+    .nav-links {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 20px 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+    }
+
+    .nav-links li {
+        text-align: center !important;
+        padding: 15px 0 !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+    }
+
+    .nav-links li a {
+        color: #000 !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+    }
+
+    /* 4. The Hamburger */
     .hamburger-menu {
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        width: 25px !important;
-        height: 16px !important;
-        background: transparent !important;
+        width: 30px !important;
+        height: 20px !important;
+        background: none !important;
         border: none !important;
         cursor: pointer !important;
-        margin-left: auto !important; /* Pushes to far right */
-        padding: 0 !important;
-        z-index: 100 !important;
+        margin-left: auto !important;
     }
 
-    /* Hamburger Lines */
     .hamburger-menu span {
-        display: block !important;
         width: 100% !important;
-        height: 2px !important;
-        background-color: #004e92 !important; /* Using your Stellar Blue color */
+        height: 3px !important;
+        background-color: #004e92 !important;
         border-radius: 2px !important;
     }
 }
+@media (max-width: 768px) {
+    /* Your other mobile styles... */
 
-/* --- DESKTOP RESET --- */
-@media (min-width: 769px) {
-    .hamburger-menu {
-        display: none !important;
+    .nav-right-group.active {
+        display: block !important;
     }
 }
 
